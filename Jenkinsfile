@@ -5,14 +5,14 @@ pipeline {
     stages {
         stage('checkout role'){
             steps{
-                dir('mnt-homeworks-ansible') {
-                    git branch: 'main', credentialsId: '2ae3ac29-908a-45f9-9cea-90d9ab9db609', url: 'git@github.com:netology-code/mnt-homeworks-ansible.git'
+                dir('9_4') {
+                    git branch: 'main', credentialsId: '04dc2180-5b74-4c89-abd4-ef1098b5be10', url: 'https://github.com/FanisIbragimov/9_4.git'
                 }
             }
         }
         stage('Install molecule') {
             steps{
-                dir('mnt-homeworks-ansible'){
+                dir('9_4'){
                     sh 'pip3 install -r test-requirements.txt'
                 }
                 sh "echo =============="
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run Molecule'){
             steps{
-                dir('mnt-homeworks-ansible'){
+                dir('9_4'){
                     sh 'molecule test'
                 }
             }
